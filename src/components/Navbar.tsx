@@ -24,20 +24,40 @@ function Navbar() {
             <span className="text-xl font-bold text-foreground">SBooks</span>
           </Link>
           <div className="flex items-center gap-2">
-            <Button>
+            <Button
+              variant={isActive("/") ? "default" : "ghost"}
+              size="sm"
+              asChild
+            >
               <Link href="/">Feed</Link>
             </Button>
-            <Button>
-              <Link href="/">Explore </Link>
+            {/* <------------------------------------------> */}
+            <Button
+              variant={isActive("/explore") ? "default" : "ghost"}
+              size="sm"
+              asChild
+            >
+              <Link href="/explore">Explore </Link>
             </Button>
-            <Button>
-              <Link href="/">Add Book</Link>
+            {/* <------------------------------------------> */}
+            <Button
+              variant={isActive("/add-book") ? "default" : "ghost"}
+              size="sm"
+              asChild
+            >
+              <Link href="/add-book">Add Book</Link>
             </Button>
-            <Button>
-              <Link href="/">Library</Link>
+            {/* <------------------------------------------> */}
+            <Button
+              variant={isActive("/library") ? "default" : "ghost"}
+              size="sm"
+              asChild
+            >
+              <Link href="/library">Library</Link>
             </Button>
-            <Button>
-              <Link href="/">Sign In</Link>
+            {/* <------------------------------------------> */}
+            <Button variant={"outline"}>
+              <Link href="/sign-in">Sign In</Link>
             </Button>
           </div>
         </div>
