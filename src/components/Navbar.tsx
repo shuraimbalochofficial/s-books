@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { BookKey } from "lucide-react";
+import { BookKey, BookOpen, Compass, Library, Plus } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 function Navbar() {
@@ -29,7 +29,9 @@ function Navbar() {
               size="sm"
               asChild
             >
-              <Link href="/">Feed</Link>
+              <Link href="/" className="gap-2">
+                <span className="hidden sm:inline">Feed</span>
+              </Link>
             </Button>
             {/* <------------------------------------------> */}
             <Button
@@ -37,7 +39,9 @@ function Navbar() {
               size="sm"
               asChild
             >
-              <Link href="/explore">Explore </Link>
+              <Link href="/explore" className="gap-2">
+                <span className="hidden sm:inline">Explore</span>
+              </Link>
             </Button>
             {/* <------------------------------------------> */}
             <Button
@@ -45,7 +49,10 @@ function Navbar() {
               size="sm"
               asChild
             >
-              <Link href="/add-book">Add Book</Link>
+              <Link href="/add-book" className="gap-1">
+                <Plus className="w-4 h-4" />
+                <span className="hidden sm:inline">Add Book</span>
+              </Link>
             </Button>
             {/* <------------------------------------------> */}
             <Button
@@ -53,7 +60,10 @@ function Navbar() {
               size="sm"
               asChild
             >
-              <Link href="/library">Library</Link>
+              <Link href="/library" className="gap-2">
+                <Library className="w-4 h-4" />
+                <span className="hidden sm:inline">Library</span>
+              </Link>
             </Button>
             {/* <------------------------------------------> */}
             <Button variant={"outline"}>
