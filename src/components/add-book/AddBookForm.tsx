@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "../ui/card";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
 const AddBookForm = () => {
+  const [coverPreview, setCoverPreview] = useState<string | null>(null);
   return (
     <div>
       <Card className="p-8">
         <form>
-          <div>
+          <div className="space-y-2">
             <Label htmlFor="title" className="font-semibold text-lg">
               Book Title*
             </Label>
@@ -20,7 +21,8 @@ const AddBookForm = () => {
               className="h-12 text-base!"
             />
           </div>
-          <div>
+          {/* heheehhehhehheehhhehheh */}
+          <div className="space-y-2">
             <Label htmlFor="author" className="font-semibold text-lg">
               Author *
             </Label>
@@ -32,6 +34,16 @@ const AddBookForm = () => {
               required
               className="h-12 text-base!"
             />
+          </div>
+          {/* heheehhehhehheehhhehheh */}
+          <div className="space-y-2">
+            <Label htmlFor="cover" className="font-semibold text-lg">
+              Cover Image *
+            </Label>
+
+            <div>
+              <div></div>
+            </div>
           </div>
         </form>
       </Card>
