@@ -7,9 +7,11 @@ const Hero = () => {
   return (
     <section className="border-b border-[#DAD3C8]">
       <div>
-        <div>
-          <h1>Welcome to the Reading Room</h1>
-          <p>
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <h1 className="text-7xl! md:text-6xl font-bold text-foreground">
+            Welcome to the Reading Room
+          </h1>
+          <p className="text-lg text-[#847062] leading-relaxed">
             A sanctuary for bibliophiles. Discover, share and discuss the
             written word with fellow readers acriss the realm.
           </p>
