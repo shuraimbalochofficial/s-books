@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { BookKey, BookOpen, Compass, Library, Plus } from "lucide-react";
+import { BookKey, Library, Plus } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 function Navbar() {
