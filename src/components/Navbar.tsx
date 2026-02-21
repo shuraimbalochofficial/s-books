@@ -4,6 +4,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { BookKey, Library, Plus } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 function Navbar() {
   const pathname = usePathname();
@@ -66,9 +67,20 @@ function Navbar() {
               </Link>
             </Button>
             {/* <------------------------------------------> */}
-            <Button variant={"outline"}>
+            <SignedOut>
+              <SignInButton>
+                <Button variant={"outline"} size={"sm"}>
+                  <Link href="/">Sign In</Link>
+                </Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            {/* <------------------------------------------> */}
+            {/* <Button variant={"outline"} size={"sm"}>
               <Link href="/sign-in">Sign In</Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
