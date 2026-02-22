@@ -5,6 +5,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { BookPlus } from "lucide-react";
 
 const popularGenres = [
   "Classic",
@@ -129,8 +130,27 @@ const AddBookForm = () => {
               />
             </div>
 
-            <div>
-              <Label>Publication Year</Label>
+            <div className="space-y-2">
+              <Label htmlFor="year" className="font-semibold text-lg">
+                Publication Year
+              </Label>
+
+              <Input
+                id="year"
+                name="publishedYear"
+                type="number"
+                placeholder="2007"
+                min="1000"
+                max={new Date().getFullYear()}
+                className="h-12 text-base!"
+              />
+            </div>
+
+            <div className="pt-4">
+              <Button type="submit" size="lg" className="w-full">
+                <BookPlus className="w-5 h-5 mr-2" />
+                Add Book to Library
+              </Button>
             </div>
           </div>
         </form>
