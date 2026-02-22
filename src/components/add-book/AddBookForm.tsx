@@ -20,6 +20,7 @@ const popularGenres = [
 
 const AddBookForm = () => {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
+  const [selectedGenre, setSelectedGenre] = useState("");
   return (
     // jaan zer chunu
     <div>
@@ -93,15 +94,24 @@ const AddBookForm = () => {
                   Upload a cover image (JPEG/PNG). Max size: 5MB.
                 </p>
               </div>
+            </div>
 
-              {/* Genre */}
-              <div className="space-y-3">
-                <Label className="font-semibold text-lg">Genre *</Label>
-                <div>
-                  {popularGenres.map((genre) => (
-                    <Button key={genre}></Button>
-                  ))}
-                </div>
+            {/* Genre */}
+            <div className="space-y-3">
+              <Label className="font-semibold text-lg">Genre *</Label>
+              <div className="flex flex-wrap gap-2">
+                {popularGenres.map((genre) => (
+                  <Button
+                    key={genre}
+                    type="button"
+                    variant={selectedGenre === genre ? "default" : "outline"}
+                    size="sm"
+                    className="rounded-full"
+                    onClick={() => setSelectedGenre(genre)}
+                  >
+                    {genre}
+                  </Button>
+                ))}
               </div>
             </div>
           </div>
