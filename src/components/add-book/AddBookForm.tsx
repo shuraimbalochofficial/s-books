@@ -22,7 +22,17 @@ const popularGenres = [
 
 const AddBookForm = () => {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
+  const [coverFile, setCoverFile] = useState<File | null>(null);
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+  };
   return (
     <div className="max-w-3xl mx-auto py-6">
       <Card className="p-8">
@@ -81,12 +91,14 @@ const AddBookForm = () => {
                   onChange={(e) => {
                     const file = e.target.files?.[0] ?? null;
                     if (!file) {
+                      setCoverFile(null);
                       setCoverPreview(null);
                       return;
                     }
 
                     if (coverPreview) URL.revokeObjectURL(coverPreview);
                     const url = URL.createObjectURL(file);
+                    setCoverFile(file);
                     setCoverPreview(url);
                   }}
                   className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-[#E6B81D] file:text-white"
