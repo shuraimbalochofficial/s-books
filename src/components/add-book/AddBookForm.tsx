@@ -5,7 +5,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
 const AddBookForm = () => {
-  const [coverPreview, setCoverPreview] = useState(null);
+  const [coverPreview, setCoverPreview] = useState<string | null>(null);
   return (
     <div>
       <Card className="p-8">
@@ -42,7 +42,7 @@ const AddBookForm = () => {
               Cover Image *
             </Label>
 
-            <div>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="w-32 h-48 bg-muted rounded overflow-hidden border flex items-center justify-center">
                 {coverPreview ? (
                   <img
@@ -61,6 +61,17 @@ const AddBookForm = () => {
                   name="cover"
                   type="file"
                   accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] ?? null;
+                    if (!file) {
+                      setCoverPreview(null);
+                      return;
+                    }
+
+                    if (coverPreview) URL.revokeObjectURL(coverPreview);
+                    const url = URL.createObjectURL(file);
+                    setCoverPreview(url);
+                  }}
                   className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-[#E6B81D] file:text-white"
                 />
               </div>
