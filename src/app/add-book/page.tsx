@@ -1,3 +1,4 @@
+import AddBookForm from "@/components/add-book/AddBookForm";
 import React from "react";
 
 const page = () => {
@@ -12,6 +13,7 @@ const page = () => {
       </p>
 
       {/* form */}
+      <AddBookForm/>
     </div>
   );
 };
