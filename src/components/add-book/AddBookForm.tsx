@@ -4,6 +4,7 @@ import { Card } from "../ui/card";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
 
 const popularGenres = [
   "Classic",
@@ -22,8 +23,7 @@ const AddBookForm = () => {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [selectedGenre, setSelectedGenre] = useState("");
   return (
-    // jaan zer chunu
-    <div>
+    <div className="max-w-3xl mx-auto py-6">
       <Card className="p-8">
         <form className="space-y-6">
           <div className="space-y-2">
@@ -113,6 +113,24 @@ const AddBookForm = () => {
                   </Button>
                 ))}
               </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="description" className="font-semibold text-lg">
+                Description *
+              </Label>
+              <Textarea
+                id="description"
+                name="description"
+                placeholder="Tell Us about this Book..."
+                rows={6}
+                required
+                className="resize-none text-base!"
+              />
+            </div>
+
+            <div>
+              <Label>Publication Year</Label>
             </div>
           </div>
         </form>
