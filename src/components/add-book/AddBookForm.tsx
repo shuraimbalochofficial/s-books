@@ -32,11 +32,19 @@ const AddBookForm = () => {
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
+
+    if (coverFile) {
+      formData.set("cover", coverFile);
+    }
+
+    console.log("Form Data: ", formData);
+
+    setIsLoading(false);
   };
   return (
     <div className="max-w-3xl mx-auto py-6">
       <Card className="p-8">
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="title" className="font-semibold text-lg">
               Book Title*
@@ -159,9 +167,16 @@ const AddBookForm = () => {
             </div>
 
             <div className="pt-4">
-              <Button type="submit" size="lg" className="w-full">
-                <BookPlus className="w-5 h-5 mr-2" />
-                Add Book to Library
+              <Button
+                type="submit"
+                size={"lg"}
+                className="w-full"
+                disabled={isLoading}
+              >
+                <BookPlus
+                  className={`w-5 h-5 mr-2 `}
+                />
+                {isLoading ? "Adding..." : "Add Book to Library"}
               </Button>
             </div>
           </div>
