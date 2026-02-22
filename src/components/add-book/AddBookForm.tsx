@@ -3,10 +3,25 @@ import React, { useState } from "react";
 import { Card } from "../ui/card";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+
+const popularGenres = [
+  "Classic",
+  "Fiction",
+  "Romance",
+  "Drama",
+  "Gothic",
+  "Dystopian",
+  "Adventure",
+  "Poetry",
+  "Mystery",
+  "Fantasy",
+];
 
 const AddBookForm = () => {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   return (
+    // jaan zer chunu
     <div>
       <Card className="p-8">
         <form className="space-y-6">
@@ -74,6 +89,19 @@ const AddBookForm = () => {
                   }}
                   className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-[#E6B81D] file:text-white"
                 />
+                <p className="text-sm! text-muted-foreground mt-1">
+                  Upload a cover image (JPEG/PNG). Max size: 5MB.
+                </p>
+              </div>
+
+              {/* Genre */}
+              <div className="space-y-3">
+                <Label className="font-semibold text-lg">Genre *</Label>
+                <div>
+                  {popularGenres.map((genre) => (
+                    <Button key={genre}></Button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
