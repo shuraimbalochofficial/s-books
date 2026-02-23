@@ -39,12 +39,28 @@ const AddBookForm = () => {
 
     console.log("Form Data: ", formData);
 
+    const collected: Record<string, unknown> = {};
+
+    for (const [key, value] of formData.entries()) {
+      if (value instanceof File) {
+        collected[key] = {
+          name: value.name,
+          size: value.size,
+          type: value.type,
+        };
+      } else {
+        collected[key] = value;
+      }
+    }
+
     setIsLoading(false);
   };
   return (
     <div className="max-w-3xl mx-auto py-6">
       <Card className="p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
+          <input type="hidden" name="genre" value={selectedGenre} />
+
           <div className="space-y-2">
             <Label htmlFor="title" className="font-semibold text-lg">
               Book Title*
@@ -173,9 +189,7 @@ const AddBookForm = () => {
                 className="w-full"
                 disabled={isLoading}
               >
-                <BookPlus
-                  className={`w-5 h-5 mr-2 `}
-                />
+                <BookPlus className={`w-5 h-5 mr-2 `} />
                 {isLoading ? "Adding..." : "Add Book to Library"}
               </Button>
             </div>
