@@ -55,9 +55,14 @@ const AddBookForm = () => {
     }
 
     try {
-      await axios.post("")
-    } catch (error) {
-    }
+      await axios.post("/api/books", formData, {
+        headers: {
+          "Content-Type": "multipart/formdata",
+        },
+      });
+
+      console.log("Book Added Succesfully");
+    } catch (error) {}
   };
   return (
     <div className="max-w-3xl mx-auto py-6">
