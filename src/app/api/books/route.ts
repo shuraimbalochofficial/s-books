@@ -24,14 +24,14 @@ export async function POST(req: Request) {
       ? Number(publishedYearRaw)
       : undefined;
 
-    const cover = formData.get("cover") as File;
+    const cover = formData.get("cover") as File; //2:21:20
 
     //Will work on cover later
 
     const book = await Book.create({
       title,
       author,
-      cover: cover,
+      cover: cover.name,
       genre,
       description,
       publishedYear,
