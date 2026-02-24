@@ -62,6 +62,7 @@ const AddBookForm = () => {
       });
 
       console.log("Book Added Succesfully");
+      router.push;
     } catch (error) {}
   };
   return (
