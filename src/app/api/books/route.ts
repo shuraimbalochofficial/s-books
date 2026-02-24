@@ -33,8 +33,13 @@ export async function POST(req: Request) {
         genre,
         description,
         publishedYear,
-        addedBy: { id: user },
+        addedBy: { id: user?.id, firstName: user?.firstName },
       });
+      
+      return Response.json({ book }, { status: 201 });
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log("Error adding book:", error);
+    return Response.json({ error: "Failed to create book" }, { status: 500 });
+  }
 }
