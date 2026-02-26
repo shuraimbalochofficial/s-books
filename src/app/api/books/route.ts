@@ -73,6 +73,9 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Error fetching Books", error);
 
-    return Response.json({error: " Failed to fetched books "}, {status: 500})
+    return Response.json(
+      { error: " Failed to fetched books " },
+      { status: 500 },
+    );
   }
 }
