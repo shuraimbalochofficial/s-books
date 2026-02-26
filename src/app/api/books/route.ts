@@ -26,7 +26,15 @@ export async function POST(req: Request) {
 
     const cover = formData.get("cover") as File; //2:21:20
 
-    //Will work on cover later
+    if (!title || !author || !cover || !genre || !description) {
+      return Response.json(
+        {
+          error:
+            "Title, author, cover image, genre and description are required",
+        },
+        { status: 400 },
+      );
+    }
 
     const book = await Book.create({
       title,
