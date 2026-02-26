@@ -1,4 +1,5 @@
 import { connectToDatabase } from "@/lib/connectToDB";
+import { UploadImage } from "@/lib/upload-image";
 import Book from "@/models/book";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
@@ -36,10 +37,18 @@ export async function POST(req: Request) {
       );
     }
 
+    let uploadResult: any;
+
+    if (cover) {
+      uploadResult = await UploadImage(cover, "Sbooks");
+    }
+
+    console.log(" Upload Result:", uploadResult);
+
     const book = await Book.create({
       title,
       author,
-      cover: cover.name,
+      cover: uploadResult?.secure_url || cover.name,
       genre,
       description,
       publishedYear,
