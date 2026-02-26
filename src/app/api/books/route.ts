@@ -2,6 +2,7 @@ import { connectToDatabase } from "@/lib/connectToDB";
 import { UploadImage } from "@/lib/upload-image";
 import Book from "@/models/book";
 import { auth, currentUser } from "@clerk/nextjs/server";
+import { NextRequest } from "next/server";
 
 //Adding a book to the DataBase
 export async function POST(req: Request) {
@@ -59,5 +60,19 @@ export async function POST(req: Request) {
   } catch (error) {
     console.log("Error adding book:", error);
     return Response.json({ error: "Failed to create book" }, { status: 500 });
+  }
+}
+
+//Getting all books from DataBAse
+export async function GET(request: NextRequest) {
+  try {
+    await connectToDatabase();
+
+    const books = await Book.find().sort({ createdAt: -1 });
+    return Response.json({ books }, { status: 200 });
+  } catch (error) {
+    console.error("Error fetching Books", error);
+
+    return Response.json({error: " Failed to fetched books "}, {status: 500})
   }
 }
