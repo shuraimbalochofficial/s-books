@@ -14,6 +14,10 @@ const BookCard = ({ _id, title, author, cover, genre, addedBy }: Book) => {
             fill
           />
         </div>
+        <div className="">
+          <h3>{title}</h3>
+          <p></p>
+        </div>
       </div>
     </Link>
   );
