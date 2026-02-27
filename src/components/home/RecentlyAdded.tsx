@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import BookCard from "../BookCard";
 
 // interface Book{
 
@@ -34,12 +35,18 @@ const RecentlyAdded = () => {
   }
 
   return (
-    <section>
-      <div className="">
-        <h2>Recently Added</h2>
+    <section className="px-4 py-10">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-3xl font-bold text-foreground">Recently Added</h2>
         <Button variant="outline" asChild>
           <Link href="/explore">View All</Link>
         </Button>
+      </div>
+
+      <div>
+        {recentBooks.map((book) => (
+          <BookCard key={book._id} {...book} />
+        ))}
       </div>
     </section>
   );
