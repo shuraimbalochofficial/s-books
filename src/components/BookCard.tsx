@@ -1,11 +1,13 @@
+import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Badge } from "./ui/badge";
 
 const BookCard = ({ _id, title, author, cover, genre, addedBy }: Book) => {
   return (
     <Link href={`/book/${_id}`}>
-      <div>
+      <div className="group bg-white rounded-sm hover:border transition-all">
         <div className="relative w-full h-80 overflow-hidden">
           <Image
             src={cover}
@@ -14,9 +16,20 @@ const BookCard = ({ _id, title, author, cover, genre, addedBy }: Book) => {
             fill
           />
         </div>
-        <div className="">
-          <h3>{title}</h3>
-          <p></p>
+        <div className="p-4 space-y-2">
+          <h3 className="font-semibold text-lg line-clamp-2 text-foreground group-hover:text-[#803939] transition-colors duration-300 ease-in-out">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground flex items-center gap-1">
+            <User className="w-3 h-3" /> {author}
+          </p>
+          <div>
+            <Badge variant={"secondary"} className="text-xs bg-[#e8dbc9]">
+              {genre}
+            </Badge>
+          </div>
+
+          {addedBy && <p>Added by: {addedBy.firstName}</p>}
         </div>
       </div>
     </Link>
